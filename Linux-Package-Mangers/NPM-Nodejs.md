@@ -9,6 +9,7 @@ NPM (Node Package Manager) is the default package manager for Node.js. It allows
 ### Installation Methods
 
 #### Using Node Version Manager (NVM) - Recommended
+
 ```bash
 # Install NVM (Linux/macOS)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
@@ -24,6 +25,7 @@ nvm use 18.17.0
 ```
 
 #### On Ubuntu/Debian
+
 ```bash
 # Using apt
 sudo apt update
@@ -35,26 +37,31 @@ sudo apt-get install -y nodejs
 ```
 
 #### On Fedora
+
 ```bash
 sudo dnf install nodejs npm
 ```
 
 #### On Arch Linux
+
 ```bash
 sudo pacman -S nodejs npm
 ```
 
 #### On Windows (using Chocolatey)
+
 ```cmd
 choco install nodejs
 ```
 
 #### On macOS (using Homebrew)
+
 ```bash
 brew install node
 ```
 
 ### Verify Installation
+
 ```bash
 node --version
 npm --version
@@ -63,6 +70,7 @@ npm --version
 ## Basic NPM Commands
 
 ### Initializing Projects
+
 ```bash
 # Initialize a new project
 npm init
@@ -75,6 +83,7 @@ npm init --scope=@username
 ```
 
 ### Installing Packages
+
 ```bash
 # Install a package locally (in current project)
 npm install package-name
@@ -109,6 +118,7 @@ npm install package-name@beta
 ```
 
 ### Removing Packages
+
 ```bash
 # Remove a package
 npm uninstall package-name
@@ -124,6 +134,7 @@ npm uninstall -g package-name
 ```
 
 ### Updating Packages
+
 ```bash
 # Update a specific package
 npm update package-name
@@ -144,6 +155,7 @@ npm install package-name@latest
 ## Package Management
 
 ### Working with package.json
+
 ```bash
 # View package information
 npm list
@@ -165,6 +177,7 @@ npm view package-name
 ```
 
 ### Scripts Management
+
 ```bash
 # Run scripts defined in package.json
 npm run script-name
@@ -179,6 +192,7 @@ npx package-name
 ```
 
 ### Dependencies Management
+
 ```bash
 # Install exact version (no semver)
 npm install --save-exact package-name
@@ -198,6 +212,7 @@ npm install https://github.com/user/project/tarball/branch
 ## Advanced NPM Usage
 
 ### Configuration Management
+
 ```bash
 # View all configuration settings
 npm config list
@@ -223,6 +238,7 @@ npm root -g
 ```
 
 ### Registry Management
+
 ```bash
 # View current registry
 npm config get registry
@@ -247,6 +263,7 @@ npm publish
 ```
 
 ### Working with Lock Files
+
 ```bash
 # Generate package-lock.json
 npm install
@@ -270,6 +287,7 @@ npm audit fix --force
 ## NPM Scripts and Execution
 
 ### Creating and Running Scripts
+
 ```bash
 # Run script from package.json
 npm run build
@@ -293,6 +311,7 @@ npm run test -- --verbose
 ```
 
 ### Using npx
+
 ```bash
 # Run package without installing
 npx create-react-app my-app
@@ -307,6 +326,7 @@ npx package-name
 ## Security and Best Practices
 
 ### Security Auditing
+
 ```bash
 # Check for vulnerabilities
 npm audit
@@ -325,6 +345,7 @@ npm audit --audit-level high
 ```
 
 ### Package Verification
+
 ```bash
 # Verify packages integrity
 npm doctor
@@ -336,6 +357,7 @@ npm doctor
 ## Publishing Packages
 
 ### Preparing for Publication
+
 ```bash
 # Check if package is ready for publication
 npm pack  # Creates .tgz file for testing
@@ -348,6 +370,7 @@ npm publish --dry-run
 ```
 
 ### Publishing
+
 ```bash
 # Publish package to npm registry
 npm publish
@@ -360,6 +383,7 @@ npm publish --access public
 ```
 
 ### Version Management
+
 ```bash
 # View current version
 npm version
@@ -380,6 +404,7 @@ npm version premajor
 ## Troubleshooting
 
 ### Common Issues and Solutions
+
 ```bash
 # Clear npm cache
 npm cache clean --force
@@ -407,6 +432,7 @@ NODE_ENV=production npm install
 ```
 
 ### Debugging
+
 ```bash
 # Verbose output
 npm install --verbose
@@ -421,6 +447,7 @@ npm install --dry-run
 ## Working with Workspaces
 
 ### Monorepo Setup
+
 ```bash
 # Example package.json with workspaces:
 # {
@@ -444,6 +471,7 @@ npm run build --workspace=package-name
 ## Environment-Specific Installations
 
 ### Development vs Production
+
 ```bash
 # Install only production dependencies
 npm install --production
@@ -455,6 +483,7 @@ NODE_ENV=development npm install
 ```
 
 ### Platform-Specific Dependencies
+
 ```bash
 # Install only for specific OS
 npm install --os=linux
