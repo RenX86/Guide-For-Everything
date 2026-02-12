@@ -7,6 +7,7 @@ Chocolatey is a package manager for Windows that provides a command-line interfa
 ## Installing Chocolatey
 
 ### Prerequisites
+
 - Windows 7+ / Windows Server 2003+
 - PowerShell v2+
 - .NET Framework 4+
@@ -14,22 +15,26 @@ Chocolatey is a package manager for Windows that provides a command-line interfa
 ### Installation Steps
 
 #### Method 1: Command Prompt (Admin)
+
 ```cmd
 @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command " [System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
 ```
 
 #### Method 2: PowerShell (Admin)
+
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
 
 #### Method 3: Alternative PowerShell (Admin)
+
 ```powershell
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
 
 ### Verify Installation
+
 ```cmd
 choco --version
 ```
@@ -37,6 +42,7 @@ choco --version
 ## Basic Chocolatey Commands
 
 ### Searching for Packages
+
 ```cmd
 # Search for a package
 choco search packagename
@@ -52,6 +58,7 @@ choco search packagename --limit-output
 ```
 
 ### Installing Packages
+
 ```cmd
 # Install a package
 choco install packagename
@@ -70,6 +77,7 @@ choco install packagename --install-directory="C:\MyPath"
 ```
 
 ### Upgrading Packages
+
 ```cmd
 # Upgrade a specific package
 choco upgrade packagename
@@ -85,6 +93,7 @@ choco upgrade packagename --version=2.0.0
 ```
 
 ### Removing Packages
+
 ```cmd
 # Uninstall a package
 choco uninstall packagename
@@ -102,6 +111,7 @@ choco uninstall packagename --remove-dependencies=false
 ## Advanced Chocolatey Commands
 
 ### Listing Packages
+
 ```cmd
 # List installed packages
 choco list --local-only
@@ -117,6 +127,7 @@ choco list --local-only --detail
 ```
 
 ### Package Information
+
 ```cmd
 # Get package information
 choco info packagename
@@ -129,6 +140,7 @@ choco info packagename --version=1.0.0
 ```
 
 ### Package Sources Management
+
 ```cmd
 # List sources
 choco source list
@@ -152,6 +164,7 @@ choco source update -n=name -s="new-source-url"
 ## Chocolatey Configuration
 
 ### Get Configuration
+
 ```cmd
 # Show all configuration
 choco config list
@@ -161,6 +174,7 @@ choco config get config-name
 ```
 
 ### Set Configuration
+
 ```cmd
 # Set a configuration
 choco config set config-name value
@@ -172,6 +186,7 @@ choco config set proxyPassword password
 ```
 
 ### Feature Management
+
 ```cmd
 # List features
 choco feature list
@@ -186,6 +201,7 @@ choco feature disable -n=feature-name
 ## Managing Multiple Packages
 
 ### Bulk Operations
+
 ```cmd
 # Install multiple packages
 choco install package1 package2 package3
@@ -198,6 +214,7 @@ choco install -y -r < packages.txt
 ```
 
 ### Creating Package Lists
+
 ```cmd
 # Export installed packages to file
 choco list --local-only > installed-packages.txt
@@ -209,6 +226,7 @@ choco export > packages.config
 ## Development Tools
 
 ### Creating Custom Packages
+
 ```cmd
 # Create new package template
 choco new packagename
@@ -221,6 +239,7 @@ choco install packagename.nupkg --source .
 ```
 
 ### Package Verification
+
 ```cmd
 # Verify package
 choco verify -whatif packagename
@@ -229,6 +248,7 @@ choco verify -whatif packagename
 ## Troubleshooting
 
 ### Common Issues and Solutions
+
 ```cmd
 # Force reinstall a package
 choco uninstall packagename
@@ -245,6 +265,7 @@ choco install packagename --no-progress
 ```
 
 ### Debugging
+
 ```cmd
 # Verbose output
 choco install packagename -dv
@@ -257,6 +278,7 @@ choco install packagename -t
 ```
 
 ### Repairing Chocolatey
+
 ```cmd
 # Reinstall Chocolatey
 choco upgrade chocolatey
@@ -268,6 +290,7 @@ choco upgrade chocolatey
 ## Security and Verification
 
 ### Package Verification
+
 ```cmd
 # Verify package checksums
 choco install packagename --force -dv
@@ -277,6 +300,7 @@ choco install packagename --ignore-checksums
 ```
 
 ### Security Best Practices
+
 - Only install packages from trusted sources
 - Verify package checksums
 - Keep Chocolatey updated

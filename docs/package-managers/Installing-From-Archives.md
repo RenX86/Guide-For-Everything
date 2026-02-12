@@ -18,6 +18,7 @@ Installing software from compressed archives is a common practice in Linux envir
 ### 1. Download the Archive
 
 First, download the archive file from the official source:
+
 ```bash
 wget https://example.com/software.tar.xz
 # or
@@ -26,22 +27,26 @@ curl -O https://example.com/software.tar.xz
 
 ### 2. Extract the Archive
 
-#### For .tar.xz files:
+#### For .tar.xz files
+
 ```bash
 tar -xf software.tar.xz
 ```
 
-#### For .tar.gz files:
+#### For .tar.gz files
+
 ```bash
 tar -xzf software.tar.gz
 ```
 
-#### For .tar.bz2 files:
+#### For .tar.bz2 files
+
 ```bash
 tar -xjf software.tar.bz2
 ```
 
-#### For .zip files:
+#### For .zip files
+
 ```bash
 unzip software.zip
 ```
@@ -59,14 +64,18 @@ cd software-directory/
 Many archive files contain source code that needs to be compiled:
 
 #### 1. Check README and INSTALL files
+
 ```bash
 cat README
 cat INSTALL
 ```
+
 These files contain specific installation instructions for the software.
 
 #### 2. Install build dependencies
+
 Most software requires build tools and libraries:
+
 ```bash
 # On Ubuntu/Debian:
 sudo apt install build-essential
@@ -79,6 +88,7 @@ sudo pacman -S base-devel
 ```
 
 #### 3. Typical build process (for software using autotools)
+
 ```bash
 # 1. Configure the build (specify installation prefix if needed)
 ./configure --prefix=/usr/local
@@ -91,6 +101,7 @@ sudo make install
 ```
 
 #### 4. Typical build process (for software using CMake)
+
 ```bash
 # 1. Create a build directory
 mkdir build && cd build
@@ -106,6 +117,7 @@ sudo make install
 ```
 
 #### 5. Typical build process (for software using Meson)
+
 ```bash
 # 1. Create a build directory
 meson builddir
@@ -122,17 +134,21 @@ sudo ninja -C builddir install
 Some archives contain pre-compiled binaries that don't require compilation:
 
 #### 1. Check for executable files
+
 ```bash
 ls -la
 ```
+
 Look for executable files marked with 'x' permissions.
 
 #### 2. Run directly
+
 ```bash
 ./executable-file
 ```
 
 #### 3. Move to system directory (optional)
+
 ```bash
 sudo cp executable-file /usr/local/bin/
 sudo chmod +x /usr/local/bin/executable-file
@@ -142,12 +158,14 @@ sudo chmod +x /usr/local/bin/executable-file
 
 AppImage files are portable applications that run without installation:
 
-#### 1. Make executable:
+#### 1. Make executable
+
 ```bash
 chmod +x application.AppImage
 ```
 
-#### 2. Run directly:
+#### 2. Run directly
+
 ```bash
 ./application.AppImage
 ```
@@ -156,12 +174,14 @@ chmod +x application.AppImage
 
 Some software is distributed as Flatpak or Snap packages:
 
-#### For Flatpak files (.flatpakref or .flatpak):
+#### For Flatpak files (.flatpakref or .flatpak)
+
 ```bash
 flatpak install application.flatpakref
 ```
 
-#### For Snap files (.snap):
+#### For Snap files (.snap)
+
 ```bash
 sudo snap install application.snap --dangerous
 ```
@@ -171,12 +191,15 @@ sudo snap install application.snap --dangerous
 ### Installing to Custom Locations
 
 To install software to a custom directory (not requiring sudo):
+
 ```bash
 ./configure --prefix=$HOME/software
 make
 make install
 ```
+
 Then add to your PATH:
+
 ```bash
 echo 'export PATH=$HOME/software/bin:$PATH' >> ~/.bashrc
 source ~/.bashrc
@@ -185,6 +208,7 @@ source ~/.bashrc
 ### Creating Uninstallers
 
 Some software doesn't provide an easy way to uninstall. Create a list of installed files:
+
 ```bash
 make DESTDIR=/tmp/install-log install
 # Check what files were installed
@@ -192,6 +216,7 @@ find /tmp/install-log -type f
 ```
 
 Or use checkinstall to create a package:
+
 ```bash
 # Install checkinstall
 sudo apt install checkinstall  # Ubuntu/Debian
@@ -205,7 +230,9 @@ sudo checkinstall make install
 ## Troubleshooting Common Issues
 
 ### Missing Dependencies
+
 If compilation fails due to missing libraries:
+
 ```bash
 # On Ubuntu/Debian, find package that provides a file:
 apt-file search filename
@@ -215,20 +242,25 @@ sudo dnf install package-devel  # Fedora
 ```
 
 ### Permission Issues
+
 Ensure you have proper permissions:
+
 ```bash
 chmod +x configure
 chmod +x setup.sh
 ```
 
 ### Compilation Errors
+
 1. Check the README or documentation
 2. Install development packages for dependencies
 3. Try using the latest archive version
 4. Check the project's issue tracker
 
 ### Missing Build Tools
+
 If basic build tools are missing:
+
 ```bash
 # Ubuntu/Debian:
 sudo apt install build-essential
@@ -241,6 +273,7 @@ sudo pacman -S base-devel
 ## Package Managers for Archives
 
 ### Using GNU Stow (for locally compiled software)
+
 ```bash
 sudo apt install stow  # Install stow first
 ./configure --prefix=/usr/local/stow/software-name
@@ -249,6 +282,7 @@ cd /usr/local/stow && sudo stow software-name
 ```
 
 ### Using Linuxbrew/Homebrew
+
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install package-name
@@ -257,12 +291,15 @@ brew install package-name
 ## Security Considerations
 
 ### Verify Downloaded Archives
+
 1. **Check checksums** if provided:
+
    ```bash
    sha256sum downloaded-file.tar.xz
    ```
 
 2. **Verify GPG signatures** if available:
+
    ```bash
    gpg --verify signature-file.asc software.tar.xz
    ```
@@ -270,6 +307,7 @@ brew install package-name
 3. **Download from official sources** only
 
 ### Safe Installation Practices
+
 1. **Read documentation** before installing
 2. **Compile and test in a safe environment** first
 3. **Keep track of what files are installed**
@@ -286,7 +324,8 @@ brew install package-name
 
 ## Uninstalling Archive-Installed Software
 
-### For software built with make:
+### For software built with make
+
 ```bash
 # If make uninstall is available:
 sudo make uninstall
@@ -294,7 +333,8 @@ sudo make uninstall
 # Otherwise, remove manually or use checkinstall package
 ```
 
-### For software in custom locations:
+### For software in custom locations
+
 Simply remove the installation directory.
 
 ## Quick Reference Commands

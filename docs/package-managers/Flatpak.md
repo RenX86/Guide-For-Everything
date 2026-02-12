@@ -6,22 +6,26 @@ Flatpak is a universal package management system for Linux that allows applicati
 
 ## Installing Flatpak
 
-### On Ubuntu/Debian:
+### On Ubuntu/Debian
+
 ```bash
 sudo apt install flatpak
 ```
 
-### On Fedora:
+### On Fedora
+
 ```bash
 sudo dnf install flatpak
 ```
 
-### On Arch Linux:
+### On Arch Linux
+
 ```bash
 sudo pacman -S flatpak
 ```
 
-### On CentOS/RHEL:
+### On CentOS/RHEL
+
 ```bash
 sudo dnf install flatpak
 ```
@@ -29,16 +33,19 @@ sudo dnf install flatpak
 ## Setting Up Repositories
 
 ### Adding Flathub Repository (recommended)
+
 ```bash
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
 
 ### Adding GNOME Nightly Repository
+
 ```bash
 flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
 ```
 
 ### Listing configured repositories
+
 ```bash
 flatpak remote-list
 ```
@@ -46,16 +53,19 @@ flatpak remote-list
 ## Installing Applications
 
 ### Installing from Flathub
+
 ```bash
 flatpak install flathub org.gimp.GIMP
 ```
 
 ### Installing specific version/branch
+
 ```bash
 flatpak install flathub org.gimp.GIMP//stable
 ```
 
 ### Installing from other repositories
+
 ```bash
 flatpak install gnome-nightly org.gnome.Builder
 ```
@@ -63,21 +73,25 @@ flatpak install gnome-nightly org.gnome.Builder
 ## Managing Applications
 
 ### Listing installed applications
+
 ```bash
 flatpak list
 ```
 
 ### Getting application information
+
 ```bash
 flatpak info org.gimp.GIMP
 ```
 
 ### Running applications
+
 ```bash
 flatpak run org.gimp.GIMP
 ```
 
 ### Updating applications
+
 ```bash
 # Update specific application
 flatpak update org.gimp.GIMP
@@ -90,11 +104,13 @@ flatpak update --system flathub
 ```
 
 ### Uninstalling applications
+
 ```bash
 flatpak uninstall org.gimp.GIMP
 ```
 
 ### Uninstalling unused dependencies
+
 ```bash
 flatpak uninstall --unused
 ```
@@ -102,11 +118,13 @@ flatpak uninstall --unused
 ## Managing Permissions
 
 ### Checking permissions
+
 ```bash
 flatpak override --show org.gimp.GIMP
 ```
 
 ### Granting permissions
+
 ```bash
 # Allow access to home directory
 flatpak override org.gimp.GIMP --filesystem=home
@@ -127,16 +145,19 @@ flatpak override org.gimp.GIMP --system-talk-name=*
 ## Advanced Management
 
 ### Installing application without running
+
 ```bash
 flatpak install --app --noninteractive flathub org.gimp.GIMP
 ```
 
 ### Exporting applications to system
+
 ```bash
 flatpak install --user flathub org.gimp.GIMP  # Install for current user only
 ```
 
 ### Managing system-wide vs user installations
+
 ```bash
 # System installation (all users)
 flatpak install flathub org.gimp.GIMP
@@ -154,22 +175,26 @@ flatpak list --system
 ## Managing Runtimes
 
 ### Listing installed runtimes
+
 ```bash
 flatpak list --runtime
 ```
 
 ### Installing runtimes
+
 ```bash
 flatpak install flathub org.gnome.Platform//42
 flatpak install flathub org.gnome.Sdk//42
 ```
 
 ### Updating runtimes
+
 ```bash
 flatpak update --runtime
 ```
 
 ### Uninstalling unused runtimes
+
 ```bash
 flatpak uninstall --unused
 ```
@@ -177,21 +202,25 @@ flatpak uninstall --unused
 ## Troubleshooting
 
 ### Reset application permissions
+
 ```bash
 flatpak override --reset org.gimp.GIMP
 ```
 
 ### Repair Flatpak installation
+
 ```bash
 flatpak repair
 ```
 
 ### Getting verbose output for debugging
+
 ```bash
 flatpak install --verbose flathub org.gimp.GIMP
 ```
 
 ### Checking Flatpak version
+
 ```bash
 flatpak --version
 ```
@@ -199,16 +228,19 @@ flatpak --version
 ## Performance and Maintenance
 
 ### Cleaning up unused files
+
 ```bash
 flatpak uninstall --unused
 ```
 
 ### Checking disk usage
+
 ```bash
 flatpak repair --dry-run
 ```
 
 ### Managing updates automatically
+
 ```bash
 # Enable automatic updates
 flatpak update --assumeyes
@@ -217,11 +249,13 @@ flatpak update --assumeyes
 ## Creating Flatpak Applications
 
 ### Installing development tools
+
 ```bash
 flatpak install flathub org.gnome.Sdk//42
 ```
 
 ### Building applications
+
 ```bash
 flatpak run org.flatpak.Builder --help
 ```
@@ -238,6 +272,7 @@ flatpak run org.flatpak.Builder --help
 ## Additional Commands
 
 ### Getting detailed information
+
 ```bash
 flatpak --help
 flatpak install --help
@@ -245,6 +280,7 @@ flatpak update --help
 ```
 
 ### Remote management
+
 ```bash
 # Remove remote
 flatpak remote-delete flathub

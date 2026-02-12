@@ -1,155 +1,223 @@
-# YUM Package Manager Command Guide
+# Red Hat Package Manager Command Guide
 
-YUM (Yellowdog Updater, Modified) is the package manager for older versions of Red Hat Enterprise Linux (RHEL), CentOS, and Fedora systems. While largely superseded by DNF in newer versions, YUM is still used in many enterprise environments.
+This guide provides comprehensive commands for DNF (Dandified YUM), the default package manager for Red Hat Enterprise Linux (RHEL), Fedora, and CentOS. DNF is the successor to YUM and offers improved performance and dependency resolution.
 
 ## 1. Package Database Management
 
 ### Synchronization and Updates
+
 - **Update package lists:**
+
   ```bash
-  sudo yum check-update
+  sudo dnf check-update
   ```
+
 - **Upgrade all packages:**
+
   ```bash
-  sudo yum update
+  sudo dnf upgrade
   ```
+
 - **Upgrade a specific package:**
+
   ```bash
-  sudo yum update package-name
+  sudo dnf upgrade package-name
   ```
+
 - **Downgrade a package:**
+
   ```bash
-  sudo yum downgrade package-name
+  sudo dnf downgrade package-name
   ```
 
 ## 2. Installing Packages
 
 ### Package Installation Commands
+
 - **Install a package:**
+
   ```bash
-  sudo yum install package-name
+  sudo dnf install package-name
   ```
+
 - **Install multiple packages:**
+
   ```bash
-  sudo yum install package1 package2 package3
+  sudo dnf install package1 package2 package3
   ```
+
 - **Install a package group:**
+
   ```bash
-  sudo yum groupinstall "Development Tools"
+  sudo dnf groupinstall "Development Tools"
   ```
+
 - **Install a local package file:**
+
   ```bash
-  sudo yum install /path/to/package.rpm
+  sudo dnf install /path/to/package.rpm
   ```
+
 - **Enable a specific repository and install a package:**
+
   ```bash
-  sudo yum install --enablerepo=repo-name package-name
+  sudo dnf install --enablerepo=repo-name package-name
   ```
 
 ## 3. Removing Packages
 
 ### Package Removal Commands
+
 - **Remove a package:**
+
   ```bash
-  sudo yum remove package-name
+  sudo dnf remove package-name
   ```
+
 - **Remove multiple packages:**
+
   ```bash
-  sudo yum remove package1 package2 package3
+  sudo dnf remove package1 package2 package3
   ```
+
 - **Remove a package group:**
+
   ```bash
-  sudo yum groupremove "Development Tools"
+  sudo dnf groupremove "Development Tools"
   ```
+
 - **Remove a package and dependencies that are no longer needed:**
+
   ```bash
-  sudo yum autoremove
+  sudo dnf autoremove
   ```
 
 ## 4. Querying and Searching
 
 ### Package Information Commands
+
 - **Search for a package in repositories:**
+
   ```bash
-  yum search package-name
+  dnf search package-name
   ```
+
 - **List installed packages:**
+
   ```bash
-  yum list installed
+  dnf list installed
   ```
+
 - **Show details of an installed package:**
+
   ```bash
-  yum info package-name
+  dnf info package-name
   ```
+
 - **List all available package groups:**
+
   ```bash
-  yum grouplist
+  dnf grouplist
   ```
+
 - **Find which package owns a file:**
+
   ```bash
-  yum provides /path/to/file
+  dnf provides /path/to/file
   ```
 
 ## 5. Repository Management
 
 ### Managing Software Repositories
+
 - **List all enabled repositories:**
+
   ```bash
-  yum repolist
+  dnf repolist
   ```
+
 - **List all repositories (including disabled):**
+
   ```bash
-  yum repolist all
+  dnf repolist all
   ```
+
 - **Enable a repository:**
+
   ```bash
-  sudo yum-config-manager --enable repo-name
+  sudo dnf config-manager --set-enabled repo-name
   ```
+
 - **Disable a repository:**
+
   ```bash
-  sudo yum-config-manager --disable repo-name
+  sudo dnf config-manager --set-disabled repo-name
+  ```
+
+- **Add a new repository:**
+
+  ```bash
+  sudo dnf config-manager --add-repo https://example.com/repo.repo
   ```
 
 ## 6. Cleaning Up
 
 ### System Maintenance Commands
+
 - **Remove cached packages:**
+
   ```bash
-  sudo yum clean packages
+  sudo dnf clean packages
   ```
+
 - **Remove all cached data:**
+
   ```bash
-  sudo yum clean all
+  sudo dnf clean all
   ```
+
 - **List unused dependencies:**
+
   ```bash
-  sudo yum autoremove --dry-run
+  sudo dnf autoremove --dry-run
   ```
 
 ## 7. Handling RPM Packages Manually
 
 ### Advanced RPM Commands
+
 - **Install a local RPM package:**
+
   ```bash
   sudo rpm -ivh package.rpm
   ```
+
 - **Upgrade an RPM package:**
+
   ```bash
   sudo rpm -Uvh package.rpm
   ```
+
 - **Remove an RPM package:**
+
   ```bash
   sudo rpm -e package-name
   ```
+
 - **Query information about an installed RPM package:**
+
   ```bash
   rpm -qi package-name
   ```
+
 - **List files installed by a package:**
+
   ```bash
   rpm -ql package-name
   ```
+
 - **Check which package owns a specific file:**
+
   ```bash
   rpm -qf /path/to/file
   ```
@@ -157,54 +225,55 @@ YUM (Yellowdog Updater, Modified) is the package manager for older versions of R
 ## 8. Troubleshooting
 
 ### Common Issues and Solutions
+
 - **Fix broken dependencies:**
+
   ```bash
-  sudo yum check
+  sudo dnf check
   ```
+
 - **Reinstall a package:**
+
   ```bash
-  sudo yum reinstall package-name
+  sudo dnf reinstall package-name
   ```
+
 - **Force install an RPM package:**
+
   ```bash
   sudo rpm -ivh --force package.rpm
   ```
+
 - **Force remove an RPM package (use with caution):**
+
   ```bash
   sudo rpm -e --nodeps package-name
   ```
 
-## 9. Advanced YUM Commands
+## 9. Performance and Optimization
 
-### Additional Features and Options
-- **View package history:**
+### Advanced DNF Features
+
+- **Run DNF with minimal output:**
+
   ```bash
-  yum history
-  ```
-- **Undo a specific transaction:**
-  ```bash
-  sudo yum history undo transaction-id
-  ```
-- **Get information about a group:**
-  ```bash
-  yum groupinfo "group-name"
-  ```
-- **Check for updates without installing:**
-  ```bash
-  yum check-update
+  sudo dnf -q install package-name
   ```
 
-## 10. Best Practices and Security
+- **Test run without making changes:**
 
-### Recommended YUM Practices
-- **Always update the system before installing new packages**
-- **Use 'yum update' regularly to keep systems secure**
-- **Verify package signatures before installation**
-- **Keep repositories up-to-date and only use trusted sources**
-- **Use 'yum list installed' to audit installed packages periodically**
+  ```bash
+  sudo dnf install --assumeno package-name
+  ```
 
-## 11. Additional Resources
+- **Skip broken packages during update:**
 
-- [Red Hat YUM Guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/ch-yum)
-- [CentOS YUM Documentation](https://wiki.centos.org/PackageManagement/Yum)
-- [YUM Command Reference](http://man7.org/linux/man-pages/man8/yum.8.html)
+  ```bash
+  sudo dnf update --skip-broken
+  ```
+
+## 10. Additional Resources
+
+- [DNF Documentation](https://dnf.readthedocs.io/)
+- [Fedora DNF Guide](https://docs.fedoraproject.org/en-US/quick-docs/dnf/)
+- [Red Hat Package Management Guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/package_manifest/index)

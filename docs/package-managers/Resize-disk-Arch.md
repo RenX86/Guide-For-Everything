@@ -17,17 +17,22 @@ Before resizing any partitions, it's crucial to follow these safety steps:
 1. **Shut down the Virtual Machine completely** or ensure no processes are using the partition
 2. **Boot from a live environment** (if resizing root partition)
 3. **Launch cfdisk**:
+
    ```bash
    sudo cfdisk /dev/sdX  # Replace X with your disk letter
    ```
+
 4. **Select the partition** you want to resize
 5. **Choose Resize** option and specify the new size
 6. **Write the changes** and quit cfdisk
 7. **Resize the filesystem** to use the new partition space:
+
    ```bash
    sudo resize2fs /dev/sdXN  # Replace X with disk letter, N with partition number
    ```
+
 8. **Reboot** the system to ensure everything works correctly:
+
    ```bash
    sudo reboot
    ```
@@ -35,18 +40,25 @@ Before resizing any partitions, it's crucial to follow these safety steps:
 ### Method 2: Using parted (Advanced users)
 
 1. **Launch parted**:
+
    ```bash
    sudo parted /dev/sdX
    ```
+
 2. **Print current partition table**:
+
    ```
    (parted) print
    ```
+
 3. **Resize the partition**:
+
    ```
    (parted) resizepart N unit size  # N is partition number
    ```
+
 4. **Exit parted and resize filesystem**:
+
    ```bash
    sudo resize2fs /dev/sdXN
    ```
@@ -54,14 +66,19 @@ Before resizing any partitions, it's crucial to follow these safety steps:
 ## Post-Resizing Steps
 
 1. **Verify the partition was resized**:
+
    ```bash
    lsblk
    ```
+
 2. **Check filesystem integrity**:
+
    ```bash
    sudo fsck /dev/sdXN
    ```
+
 3. **Verify available space**:
+
    ```bash
    df -h
    ```
@@ -76,17 +93,20 @@ Before resizing any partitions, it's crucial to follow these safety steps:
 
 ## Troubleshooting
 
-### If the filesystem doesn't recognize the new size:
+### If the filesystem doesn't recognize the new size
+
 ```bash
 sudo resize2fs /dev/sdXN
 ```
 
-### If partition table is inconsistent:
+### If partition table is inconsistent
+
 ```bash
 sudo partprobe /dev/sdX
 ```
 
-### If the partition is mounted:
+### If the partition is mounted
+
 - Unmount before resizing: `sudo umount /dev/sdXN`
 - Or boot from a live environment
 

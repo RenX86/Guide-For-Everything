@@ -7,6 +7,7 @@ pip is the standard package installer for Python. It allows you to install and m
 ## Installing pip
 
 ### For Python 2 (deprecated)
+
 ```bash
 # Download get-pip.py
 curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
@@ -14,6 +15,7 @@ python get-pip.py
 ```
 
 ### For Python 3 (recommended)
+
 Most modern Python installations include pip by default. If not installed:
 
 ```bash
@@ -40,6 +42,7 @@ python3 get-pip.py
 ## Basic pip Commands
 
 ### Installing Packages
+
 ```bash
 # Install a package
 pip install package-name
@@ -61,6 +64,7 @@ pip install --confirm-conda-deps package-name  # conda environments
 ```
 
 ### Upgrading Packages
+
 ```bash
 # Upgrade a package
 pip install --upgrade package-name
@@ -76,6 +80,7 @@ pip install package-name --upgrade --force-reinstall
 ```
 
 ### Uninstalling Packages
+
 ```bash
 # Uninstall a package
 pip uninstall package-name
@@ -88,6 +93,7 @@ pip uninstall package1 package2 package3
 ```
 
 ### Listing and Searching
+
 ```bash
 # List installed packages
 pip list
@@ -117,6 +123,7 @@ safety check
 ## Advanced pip Usage
 
 ### Requirements Files
+
 ```bash
 # Install from requirements file
 pip install -r requirements.txt
@@ -132,6 +139,7 @@ pip install -r requirements1.txt -r requirements2.txt
 ```
 
 ### Virtual Environments
+
 ```bash
 # Create virtual environment
 python -m venv myenv
@@ -153,6 +161,7 @@ python -m venv myenv --without-pip
 ```
 
 ### Installing from Different Sources
+
 ```bash
 # Install from a local directory
 pip install /path/to/local/package
@@ -176,6 +185,7 @@ pip install package.whl
 ## Package Configuration and Options
 
 ### Installing with Options
+
 ```bash
 # Install user-only (not system-wide)
 pip install --user package-name
@@ -194,6 +204,7 @@ pip install --no-cache-dir package-name
 ```
 
 ### Configuration Management
+
 ```bash
 # Show pip configuration
 pip config list
@@ -211,6 +222,7 @@ pip config unset global.index-url
 ## Virtual Environment Managers
 
 ### Using venv (built-in)
+
 ```bash
 # Create environment
 python -m venv project_env
@@ -224,6 +236,7 @@ deactivate
 ```
 
 ### Using virtualenv (third-party)
+
 ```bash
 # Install virtualenv
 pip install virtualenv
@@ -236,6 +249,7 @@ virtualenv -p python3.9 project_env
 ```
 
 ### Using conda environments with pip
+
 ```bash
 # Create conda environment
 conda create -n myenv python=3.9
@@ -250,6 +264,7 @@ pip install package-name
 ## Dependency Management
 
 ### Creating Requirements Files
+
 ```bash
 # Basic requirements
 pip freeze > requirements.txt
@@ -263,6 +278,7 @@ pip freeze | grep -E "(dev|test|lint)" > dev-requirements.txt
 ```
 
 ### Using pip-tools
+
 ```bash
 # Install pip-tools
 pip install pip-tools
@@ -280,6 +296,7 @@ pip-sync requirements.txt
 ## Troubleshooting
 
 ### Common Issues and Solutions
+
 ```bash
 # Permission denied error
 pip install --user package-name
@@ -301,6 +318,7 @@ pip install --no-cache-dir package-name
 ```
 
 ### Checking Package Integrity
+
 ```bash
 # Verify installed packages
 pip check
@@ -315,6 +333,7 @@ pip download package-name
 ## Security Best Practices
 
 ### Secure Installation
+
 ```bash
 # Verify package signatures (when available)
 pip install --require-hashes -r requirements.txt
@@ -328,6 +347,7 @@ safety check --full-report
 ```
 
 ### Pinning Versions
+
 ```bash
 # In requirements.txt, pin versions
 Django==4.1.0
@@ -337,11 +357,14 @@ requests>=2.25.0,<3.0.0
 ## Advanced pip Configuration
 
 ### Using Configuration Files
+
 Create `pip.conf` (Linux/macOS) or `pip.ini` (Windows) in:
+
 - Linux/macOS: `$HOME/.pip/pip.conf` or `$HOME/pip/pip.conf`
 - Windows: `%APPDATA%\pip\pip.ini`
 
 Example configuration:
+
 ```
 [global]
 index-url = https://pypi.org/simple/
@@ -355,6 +378,7 @@ user = true
 ```
 
 ### Using Different Package Indexes
+
 ```bash
 # Use a different index
 pip install -i https://alternative-index.com/simple/ package-name

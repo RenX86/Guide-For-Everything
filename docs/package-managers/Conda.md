@@ -1,6 +1,7 @@
 # Conda Cheat Sheet
 
 ## Overview
+
 Conda is a powerful command-line package and environment manager that allows you to install, run, and update packages and their dependencies. It also enables you to create, save, load, and switch between different project environments.
 
 > **TIP**: Anaconda Navigator is a graphical interface to use conda. Double-click the Navigator icon on your desktop or, in a Terminal or at the Anaconda prompt, type `anaconda-navigator`.
@@ -8,15 +9,21 @@ Conda is a powerful command-line package and environment manager that allows you
 ## Conda Basics
 
 ### Installation and Information
+
 - **Verify conda is installed, check version number:**
+
   ```bash
   conda info
   ```
+
 - **Update conda to the current version:**
+
   ```bash
   conda update conda
   ```
+
 - **Command line help:**
+
   ```bash
   conda install --help
   # or more generally
@@ -24,17 +31,23 @@ Conda is a powerful command-line package and environment manager that allows you
   ```
 
 ### Installing and Updating Packages
+
 - **Install a package included in Anaconda:**
+
   ```bash
   conda install PACKAGENAME
   ```
+
   Example: `conda install spyder`
 - **Run a package after install:**
+
   ```bash
   PACKAGENAME
   ```
+
   Example: `spyder`
 - **Update any installed program:**
+
   ```bash
   conda update PACKAGENAME
   ```
@@ -42,46 +55,65 @@ Conda is a powerful command-line package and environment manager that allows you
 ## Package Management
 
 ### Finding Conda Packages
+
 - **Use conda to search for a package:**
+
   ```bash
   conda search PACKAGENAME
   ```
+
 - **See list of all packages in Anaconda:**
+
   ```bash
   conda search
   ```
-- **Online documentation:** https://docs.anaconda.com/anaconda/packages/pkg-docs
+
+- **Online documentation:** <https://docs.anaconda.com/anaconda/packages/pkg-docs>
 
 ### Installing Packages
+
 - **Install a new package in the active environment:**
+
   ```bash
   conda install jupyter
   # or
   conda install PACKAGENAME
   ```
+
 - **Run an installed package:**
+
   ```bash
   jupyter-notebook
   # or
   PACKAGENAME
   ```
+
 - **Install a new package in a different environment:**
+
   ```bash
   conda install --name bio-env toolz
   ```
+
 - **Update a package in the current environment:**
+
   ```bash
   conda update scikit-learn
   ```
+
 - **Install a package from a specific channel:**
+
   ```bash
   conda install --channel conda-forge boltons
   ```
+
 - **Install a package directly from PyPI into the current active environment using pip:**
+
   ```bash
   pip install boltons
   ```
+
 - **Remove one or more packages from a specific environment:**
+
   ```bash
   conda remove --name bio-env toolz boltons
   ```
@@ -103,65 +135,93 @@ When using `conda create` or `conda install` commands, you can specify version n
 ## Environment Management
 
 ### Creating Environments
+
 - **Create a new environment with a specific Python version:**
+
   ```bash
   conda create --name py35 python=3.5
   ```
+
 - **Stack commands: create a new environment and install packages:**
+
   ```bash
   conda create --name bio-env biopython
   ```
+
 - **Make exact copy of an environment:**
+
   ```bash
   conda create --clone py35 --name py35-2
   ```
 
 ### Activating Environments
+
 - **On Windows:**
+
   ```bash
   activate py35
   ```
+
 - **On Linux/macOS:**
+
   ```bash
   source activate py35
   ```
 
 ### Deactivating Environments
+
 - **On Windows:**
+
   ```bash
   deactivate
   ```
+
 - **On macOS/Linux:**
+
   ```bash
   source deactivate
   ```
 
 ### Environment Information and Management
+
 - **Get a list of all environments (active environment is shown with *):**
+
   ```bash
   conda env list
   ```
+
 - **List all packages and versions installed in active environment:**
+
   ```bash
   conda list
   ```
+
 - **List the history of each change to the current environment:**
+
   ```bash
   conda list --revisions
   ```
+
 - **Restore environment to a previous revision:**
+
   ```bash
   conda install --revision 2
   ```
+
 - **Save environment to a text file:**
+
   ```bash
   conda list --explicit > bio-env.txt
   ```
+
 - **Create environment from a text file:**
+
   ```bash
   conda env create --file bio-env.txt
   ```
+
 - **Delete an environment and everything in it:**
+
   ```bash
   conda env remove --name bio-env
   ```
@@ -169,11 +229,13 @@ When using `conda create` or `conda install` commands, you can specify version n
 ## Managing Multiple Python Versions
 
 ### Installing Different Python Versions
+
 ```bash
 conda create --name py34 python=3.4
 ```
 
 ### Switching Between Python Versions
+
 - **Activate the new environment:**
   - Windows: `activate py34`
   - Linux/macOS: `source activate py34`
@@ -184,6 +246,7 @@ conda create --name py34 python=3.4
   > NOTE: The first version of Python in the list will be executed.
 
 - **Show version information for the current active Python:**
+
   ```bash
   python --version
   ```
@@ -191,25 +254,35 @@ conda create --name py34 python=3.4
 ## Advanced Conda Commands
 
 ### Configuration Management
+
 - **List conda configuration:**
+
   ```bash
   conda config --show
   ```
+
 - **Add a channel:**
+
   ```bash
   conda config --add channels channel-name
   ```
+
 - **Remove a channel:**
+
   ```bash
   conda config --remove channels channel-name
   ```
 
 ### Package Management Beyond Conda
+
 - **Update all packages in current environment:**
+
   ```bash
   conda update --all
   ```
+
 - **Install packages from environment file:**
+
   ```bash
   conda env update --file environment.yml
   ```
@@ -225,16 +298,19 @@ conda create --name py34 python=3.4
 ## Resources and Support
 
 ### Documentation
+
 - [Conda Documentation](conda.io/docs)
 - [Command Reference](conda.io/docs/commands)
 
 ### Support
+
 - **Free Community Support:** groups.google.com/a/continuum.io/forum/#!forum/conda
 - **Paid Support Options:** anaconda.com/support
 - **Anaconda Onsite Training Courses:** anaconda.com/training
 - **Anaconda Consulting Services:** anaconda.com/consulting
 
 ### Learn More
+
 - Learn to use conda in 30 minutes: [bit.ly/tryconda](bit.ly/tryconda)
 - Join the community: anaconda.com/community
 - Follow on Twitter: @anacondainc #AnacondaCrew
