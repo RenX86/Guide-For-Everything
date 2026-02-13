@@ -17,9 +17,13 @@ A comprehensive collection of guides, tutorials, and code examples for software 
 
 ### Documentation
 
-- [Arch Linux Installation Guide](./docs/os/Arch-Linux-Install.md)
-- [WSL Setup Guide](./docs/os/Guide-For-WSL.md)
-- [Package Manager Reference](./docs/package-managers/)
+-   [Arch Linux Installation Guide](./docs/os/Arch-Linux-Install.md)
+
+-   [Git Version Control Guide](./docs/git.md)
+
+-   [WSL Setup Guide](./docs/os/Guide-For-WSL.md)
+
+-   [Package Manager Reference](./docs/package-managers/)
 
 ### Code Examples
 
